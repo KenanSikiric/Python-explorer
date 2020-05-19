@@ -1,0 +1,103 @@
+
+<!doctype html>
+<html>
+<head>
+    <title>Python Explorer</title>
+    <meta charset="UTF-8">
+
+    <noscript>Please enable Javascript to view this page correctly.</noscript>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="brython.js"></script>
+    <script type="text/javascript" src="brython_stdlib.js"></script>
+
+    <script type="text/python3" src="console.py"></script>
+
+    <style>
+    @font-face{
+        font-family: "inconsolata";
+        src: url("Inconsolata.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal
+    }
+
+    html, body{
+        height: 100%;
+        width: 100%;
+
+        background-color: #444;
+    }
+
+    .codearea {
+        background-color:#111;
+        color:#fff;
+        font-family: 'inconsolata', 'Consolas', 'Liberation Mono', 'DejaVu Sans Mono', monospace;
+        font-size:120%;
+        overflow:auto;
+        
+        height: 100%;
+        width: 100%;
+        padding: 5px;
+
+        border: none;
+        resize: none;
+    }
+    
+    .main_container {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: auto;
+        align-content: start;
+        
+        height: 100%;
+        width: 100%;
+    }
+    .item {
+        flex: 0 1 auto;
+        padding: 15px;
+        height: 100%;
+        width: 50%;
+    }
+
+    .card {
+        background-color:#666;
+    }
+
+    .card_font {
+        color: white;
+    }
+    .card_font:hover {
+        color: lightgray;
+        text-decoration: none;
+    }
+
+    #obj_list_title {
+        font-size: 20px;
+        color: lightgray;
+    }
+    
+    </style>
+</head>
+
+<body onload="brython(0)">
+    <!-- THIS PROJECT WAS MADE POSSIBLE THANKS TO BRYTHON https://brython.info/-->
+    <div class="main_container">
+        <div class="item">
+            <textarea id="code" class="codearea"></textarea>
+        </div>
+        <div class="item">
+            <h1 id="obj_list_title">Objects:</h1>
+            <div id="var_accordion" class="accordion"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>
