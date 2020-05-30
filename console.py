@@ -4,6 +4,8 @@ import tb as traceback
 from browser import document as doc, html
 from browser import window, alert, console
 
+import py_explorer
+
 _intro = \
 """\
  +---------------------------------------------------+
@@ -58,21 +60,6 @@ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 """
-
-def on_success(data="Hello"):
-    for row in doc["var_accordion"]:
-        row.remove()
-
-    for k,v in globals()["editor_ns"].items():
-        card_div = html.DIV(Class="card")
-        card_header = html.DIV(id=f"h_{k}", Class="card-header")
-        card_header <= html.BUTTON(k, Class="card_font btn btn-link btn-block text-left", **{"data-toggle":"collapse", "data-target":f"#c_{k}", "aria-expanded":"false", "aria-controls":f"c_{k}"}) 
-        card_div <= card_header
-
-        card_content = html.DIV(id=f"c_{k}", Class="collapse hide", **{"aria-labelledby":f"h_{k}", "data-parent":"#var_accordion"})
-        card_content <= html.DIV(repr(v), Class="card-body card_font")
-        card_div <= card_content
-        doc["var_accordion"] <= card_div
 
 
 CODE_ELT = doc['code']
@@ -171,7 +158,7 @@ def myKeyPress(event):
                 flush()
                 doc['code'].value += '>>> '
                 _status = "main"
-                on_success()
+                py_explorer.on_success(doc, globals())
             except IndentationError:
                 doc['code'].value += '... '
                 _status = "block"
@@ -188,7 +175,7 @@ def myKeyPress(event):
                     flush()
                     doc['code'].value += '>>> '
                     _status = "main"
-                    on_success()
+                    py_explorer.on_success(doc, globals())
                 elif str(msg) == 'decorator expects function':
                     doc['code'].value += '... '
                     _status = "block"
@@ -213,7 +200,7 @@ def myKeyPress(event):
                 _ = exec(block_src, editor_ns)
                 if _ is not None:
                     print(repr(_))
-                on_success()
+                py_explorer.on_success(doc, globals())
             except:
                 print_tb()
             flush()
@@ -279,4 +266,4 @@ doc['code'].value = "%s\nBrython %s.%s.%s on %s %s\n>>> " % (
 doc['code'].focus()
 cursorToEnd()
 
-on_success()
+py_explorer.on_success(doc, globals())
