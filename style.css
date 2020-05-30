@@ -49,15 +49,66 @@ html, body{
     background-color:#666;
 }
 
-.card_font {
-    color: white;
+.card_header_inner {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+
+    padding: .75rem 1.25rem;
+
 }
-.card_font:hover {
-    color: lightgray;
+
+.card_header_inner_value {
+    border-left-style: solid;
+    border-width: 2px;
+}
+
+.card_font {
+    display: inline;
+    color: white;
     text-decoration: none;
+}
+
+.card_header_text {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    width: 100%;
+
+    text-overflow: ellipsis;
+
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card_content_root {
+    padding: 0;
 }
 
 #obj_list_title {
     font-size: 20px;
     color: lightgray;
+}
+
+
+/* BOOTSTRAP OVERRIDE */
+
+.card-header {
+    padding: 0;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.card-header:hover {
+    cursor: pointer;
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 0;
+    margin-top: 100px;
 }
